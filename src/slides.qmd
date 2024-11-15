@@ -1,0 +1,646 @@
+---
+title: "Rapid Transit, Labor Market, and Business Growth:"
+subtitle: "The case of São Paulo, Brazil"
+author: 
+  - name: "Arthur Alvarenga"
+    affiliation: "PPGE/UFJF and IPEA"
+  - name: "Admir Betarelli Junior"
+    affiliation: "PPGE/UFJF"
+  - name: "Ricardo Freguglia"
+    affiliation: "PPGE/UFJF"
+
+date: 2024-11-14
+
+format: 
+  revealjs:
+    theme: [solarized, custom.scss]
+    css: logo.css
+
+execute: 
+  cache: false
+
+editor: 
+  markdown: 
+    wrap: 72
+    
+knitr:
+  opts_chunk:
+    dev: png
+    dev.args:
+      bg: "#fdf6e3"
+    
+logo: images/ufjf_lates.png
+---
+
+```{r}
+#| label: setup
+#| echo: false
+
+library(dplyr)
+library(ggplot2)
+
+font <- "Barlow"
+```
+
+
+## {{< fa question >}} Motivation
+
+### We speak a lot about the triumph of the cities...
+
+:::: {.columns style="font-size: 0.9em"}
+
+* @ahlfeldt2018: $\uparrow$ 10% density $\Rightarrow \uparrow$ US\$ 270 welfare.
+* @diamond2022: biggest cities $\Rightarrow$ better services + higher wages (USA, 1980s-2010s).
+
+::::
+
+
+
+## {{< fa question >}} Motivation
+
+### ...but of their problems too.
+
+:::: {.columns style="font-size: 0.9em"}
+::: {.column width="60%"} 
+
+* @ahlfeldt2018: $\uparrow$ 10% density $\Rightarrow \uparrow$ US\$ 270 welfare.
+  + But $\downarrow$ US\$ 93 welfare, ⅓ with congestion;
+  + $\downarrow$ US\$ 240 more for renters.
+:::
+
+::: {.column width="40%"} 
+![](images/estadao.png)
+:::
+::::
+
+
+
+## {{< fa question >}} Motivation
+
+### ...but of their problems too.
+
+::: {style="font-size: 0.9em"}
+
+* @diamond2022: biggest cities $\Rightarrow$ better services + higher wages
+  + But housing costs are bigger
+  + Less qualified workers under rent migrate: **spatial sorting**
+  
+:::
+
+![](images/fortune.png)
+
+
+
+## {{< fa bullseye >}} Goals
+
+:::: {style="font-size: 0.9em"}
+Evaluate the impact of rapid transit expansion in São Paulo ---Subway (**Metrô**) and Regional Metro (**CPTM**)--- on the labor market: 
+
+* Average **hourly wage**, by firm
+* **Employment** level, by firm
+* **Employment** level, by region 
+* **Business** openings, by region
+
+
+::: {style="text-align: center; color: #d33682"}
+Even in a work-from-home world, we are not indifferent to space
+:::
+
+::::
+
+
+
+## {{< fa book >}} Foundations
+
+Transmission channels
+
+::: {style="font-size: 0.8em"}
+![Adapted from @credit2019](images/credit19.png){width="900"}
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Agglomeration Economies
+
+::: {style="font-size: 0.9em"}
+
+* Proximity $\Rightarrow$ economic gains greater than 1:1.
+* *Sharing*, *matching* e *learning*
+* Depend on **acessibility** levels:
+  + Did transit investments really increase the number of reachable opportunities?
+  + We do not measure it directly.
+* @baum-snow2015, @combes2015, @duranton2004, @gobillon2007, @redding2015
+
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Sharing
+
+::: {style="font-size: 0.9em"}
+
+* Sharing of infastructure fixed **costs** and innovation and specialization **risks**
+* Short-run hypothesis: $\bar{H}$
+* Impact on **quantities**: 
+  + $\uparrow access \rightarrow \uparrow L^s$
+  + $\uparrow access \rightarrow \uparrow q^d  \rightarrow \uparrow L^d, \uparrow n$
+* Expected effect: $\uparrow L, \uparrow n$, $\updownarrow w$ ($L^s < L^d \rightarrow \uparrow w$ and v.v.) 
+
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Matching
+
+::: {style="font-size: 0.9em"}
+
+* Workers are specialized **and** have the right skills for their tasks
+* Short-run hypothesis: $\bar{H}$
+* Impacto on the *quality*: match $\rightarrow \uparrow A$  
+* Expected effect: $\uparrow w$ (produtivity pass-through), $\updownarrow L$
+  + $\downarrow L$ if $\bar q$
+  + $\uparrow L$, if $\uparrow q$
+
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Learning
+
+::: {style="font-size: 0.9em"}
+
+* Casual or unexpected encounters $\rightarrow$ knowledge diffusion
+* Tacit knowledge/soft skills in face-to-face work 
+* Copying behavior from physical observation
+* Less concrete mechanism of the three.
+
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Firm location decision
+
+::: {style="font-size: 0.9em"}
+
+* Depends on the **industry**
+  + Intensive in K, L ou H?
+  + Consumer side (retail or B2C, e.g. doctors)?
+  + Physical output?
+
+* @white1999, @eberts1999, @glaeser2004, @debok2011
+
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Firm location decision
+
+::: {style="font-size: 0.9em"}
+
+* Depends on the **city**
+  + Transport network (supply)
+  + Modal shares (demand)
+  + Centralities (one CBD vs multiple BDs)
+
+* @white1999, @eberts1999, @glaeser2004, @debok2011
+
+:::
+
+
+
+## {{< fa book >}} Foundations
+
+### Firm location decision
+
+::: {style="font-size: 0.9em"}
+
+* Depends on the **firm**
+  + Size
+  + Age
+  + Organizational culture
+
+* @white1999, @eberts1999, @glaeser2004, @debok2011
+
+:::
+
+
+
+## {{< fa book >}} Empirical evidence
+
+::: {style="font-size: 0.6em"}
+Study |Region            |Intervention     |Outcomes                    |Result            
+:-----|:-----------------|:----------------|:----------------------------|:--------------------
+1     |Charlotte, USA    |LRT              |Employment                   |No impact
+2     |New York City, USA|Hurricane        |Employment                   |Negative
+3     |Estocolmo, Sweden |Commuter rail    |Employment and wages         |Only for immigrants
+4     |Berlim, Germany   |Wall             |Productivity                 |Positive and exponential  
+5     |Lima, Peru        |BRT              |Employment, wages, and firms |Positive, exponential, uneven
+6     |Rio de Janeiro, BR|BRT, subway, tram|Employment, wages, and firms |Positive, exponential, uneven
+:::
+
+::: {style="font-size: 0.6em"}
+1. @canales2019, 2. @tyndall2017, 3. @aslund2017, 4. @ahlfeldt2015, 5. @scholl2018, 6. @campos2019
+:::
+
+
+
+## {{< fa subway >}} São Paulo
+
+::: {style="font-size: 0.9em"}
+Rapid transit network (Metrô + CPTM) in 2023
+![](images/map-network)
+:::
+
+
+
+## {{< fa subway >}} São Paulo
+
+::: {style="font-size: 0.9em"}
+Station openings, 2002-2023
+![](images/p-openings)
+:::
+
+
+
+## {{< fa subway >}} São Paulo
+
+![](images/map-far_2004.jpeg)
+
+
+
+## {{< fa subway >}} São Paulo
+
+![](images/map-far_2014.jpeg)
+
+
+
+## {{< fa subway >}} São Paulo
+
+![](images/map-far_effective.jpeg)
+
+
+
+## {{< fa database >}} Data
+
+### RAIS 2003-2017
+
+::: {style="font-size: 0.85em"}
+* Brazilian employer-employee dataset
+* Variables: average monthly wage, monthly working hours, industry
+
+* Selection filters: 
+  + firms with $> 1$ workers (remove single-member LLCs)
+  + free entry and exit, unless firm moves to a different region
+  
+* Geolocation:
+  + address tidying $\rightarrow$ HERE & Arcgis APIs via `{tidygeocoder}` in R
+  
+:::
+
+
+
+## {{< fa database >}} Data
+
+::: {style="font-size: 0.85em"}
+
+`{r5r}` **Isochrones**: $iso \le 30 \rightarrow$ treatment; $31 < iso \le 60 \rightarrow$ control
+
+:::
+
+::: {.column width="80%"}
+![](images/map-isochrones.png)
+:::
+
+::: {.column width="20%"}
+![github.com/ipeaGIT/r5r](images/r5r.png)
+:::
+
+
+
+
+## {{< fa puzzle-piece >}} Empirical Strategy
+
+### Counterfactual
+
+::: {style="font-size: 0.9em"}
+* Had region $i$ not gained a new station, how would have the market evolved?
+* Controls: **close enough** to have a similar urban dynamic, but **far enough** to don't benefit from the expasion
+* Validity evidence: pre-treatment parallel trends
+
+:::
+
+
+
+## {{< fa puzzle-piece >}} Empirical Strategy
+
+### Selected Regions
+
+![](images/map-catchment.png)
+
+
+
+
+## {{< fa puzzle-piece >}} Empirical Strategy
+
+### Analysis units
+
+:::: {.columns style="font-size: 0.9em"}
+
+
+::: {.column width="60%"}
+
+* Average wages: firm
+  + less self-selection bias than at the individual level (harder to reallocate)
+
+* Employment: firm and hexagon grid
+
+* Number of firms: hexagon grid
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| eval: false
+library(sf)
+library(ggplot2)
+
+network <- readRDS(here::here("data/shp_sao-network.RDS"))
+
+grid <- aopdata::read_grid("spo") |> 
+  st_transform(crs = 4326)
+
+points <- tibble(addr = c(
+  "Av. Paulista, 2424 - Bela Vista, São Paulo - SP, 01310-300, Brasil",
+  "Rua Peixoto Gomide, 949 - Cerqueira César, São Paulo - SP, 01409-001, Brasil",
+  "R. da Consolação, 2423 - Consolação, São Paulo - SP, 01301-100, Brasil",
+  # "Rua Haddock Lobo, 354 - Cerqueira César, São Paulo - SP, 01414-000, Brasil",
+  "R. Dr. Ovídio Pires de Campos, 225 - Cerqueira César, São Paulo - SP, 05403-010, Brasil",
+  "R. Frei Caneca, 569 - Consolação, São Paulo - SP, 01307-001, Brasil"
+)) |> 
+  tidygeocoder::geocode("addr") |> 
+  st_as_sf(coords = c("long", "lat"), crs = st_crs(4326))
+
+ggplot() +
+  geom_sf(data = grid, fill = NA) +
+  geom_sf(data = network |> filter(lubridate::year(inaugura) < 2021)) +
+  geom_sf(data = points, color = "red") +
+  spatialops::geom_bbox(st_buffer(network |> filter(nome_est == "Paulista"), 1000)) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = "white"))
+
+ggsave(here::here("src/images/hex_example.png"), dpi = 300)
+```
+
+![Example grid](images/hex_example.png)
+
+:::
+
+
+::::
+
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+### Estimation
+
+:::: {style="font-size: 0.9em"}
+::: {layout-ncol=2}
+
+* Canonical method: difference-in-differences (DiD)
+* Intuitive: end - beginning and treatment - control
+* Easy to estimate: OLS, be it a cross-section or a panel.
+
+
+```{r}
+#| fig-cap: Exemplo fictício
+
+tibble(
+  x = rep(c("A", "B"), 2),
+  y = c(5, 4, 9, 6),
+  t = c(1,1,2,2)
+) %>% 
+  ggplot(aes(x = t, y = y, group = x)) +
+  geom_point(aes(color = x)) +
+  geom_line(aes(color = x)) +
+  # scale_x_discrete(breaks = c(0,1,2), labels = c(0,1,2)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(x = "Tempo", y = "Y", color = "Grupo") +
+  theme_linedraw(base_family = "Barlow")
+```
+:::
+::::
+
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+### Estimation
+
+::: {style="font-size: 0.8em"}
+
+* DiD challenges pointed out by recent literature^[@goodman-bacon2021; @dechaisemartin2020; @borusyak2022]
+* TWFE decomposition reveals "forbidden" comparisons
+  + First-treated units act as control under TWFE
+  + Even if the ATT is time-invarying, this is a problem if there is cohort variation 
+  
+* Even pre-treatment leads are contaminated $\rightarrow$ cannot be used for placebo tests or robustnes checks
+
+
+* Solution: address **cohort heterogeneity** directly
+
+:::
+
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+#### Callaway and Sant'Anna's [-@callaway2021a] Staggered DiD
+
+::: {style="font-size: 0.9em"}
+
+* One treatment group (cohort) per year
+* Control: not-yet-treated + never treated units
+* One parameter for each year and cohort: $ATT(g,t)$
+* Three aggregation schemes: 
+  + General
+  + By cohort 
+  + By lenght of exposure (event study)
+
+:::
+  
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+#### Callaway and Sant'Anna's [-@callaway2021a] Staggered DiD
+
+::: {style="font-size: 0.9em"}
+
+**Space** heterogeneity: separate analyses by transit line
+
+* Local urban dynamics affect potential outcomes (response to intervention)
+* Industry and amenity controls do not capture these differences entirely
+
+:::
+
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+### Controls
+
+::: {style="font-size: 0.9em"}
+
+```{r}
+tibble(
+  Y = c("ln(wage_hr)", "ln(employment)", "ln(employment)", "ln(firms)"),
+  Unit = c(rep("Firm", 2), rep("Hexagon", 2)),
+  ind_b2b = c(rep("Dummy",3),"Share"),
+  size_small = c("Dummy","","","Share"),
+  size_micro = c("Dummy","","","Share")
+)
+```
+
+:::
+
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+### Estimation
+
+::: {style="font-size: 0.9em"}
+
+* Inverse probability weighing ($ipw$) depends on the probabilities' modelling.
+* Outcome regression ($or$) depends on outcome evolution specification.
+* Doubly robust method ($dr$): combines both $ipw$ and $or$. 
+* Using $dr$, only one of them needs to be correctly specified, hence the higher robustness.
+
+:::
+
+
+
+## {{< fa calculator >}} Empirical Strategy
+
+### Inference: bootstrap procedure
+
+::: {style="font-size: 0.9em"}
+
+* Joint confidence band for all periods (in opposition to TWFE)
+* Algorithm: sequence of $t$ tests $\rightarrow$ empirical quantile distribution 
+
+:::
+
+
+
+## {{< fa magnifying-glass >}} Main Results
+
+::: {style="font-size: 0.9em"}
+Average employment per firm
+![](images/p-aggte_vinc_firm.png)
+:::
+
+
+
+## {{< fa magnifying-glass >}} Main Results
+
+::: {style="font-size: 0.9em"}
+Average employment per hexagon
+![](images/p-aggte_vinc_hex.png)
+:::
+
+
+
+## {{< fa magnifying-glass >}} Main Results
+
+::: {style="font-size: 0.9em"}
+Average hourly wage, firm level
+![](images/p-aggte_wage.png)
+:::
+
+
+
+## {{< fa magnifying-glass >}} Main Results
+
+::: {style="font-size: 0.9em"}
+Average number of firms, hexagon level
+![](images/p-aggte_firms_hex.png)
+:::
+
+## {{< fa magnifying-glass >}} Main Results
+
+::: {style="font-size: 0.6em"}
+Average number of firms, hexagon level
+```{r}
+library(tinytable)
+
+readxl::read_excel(here::here("data/tables.xlsx"), sheet = "tbl-aggte-hex-firms") %>% 
+  select(-var) %>% 
+  mutate(Cohort = ifelse(duplicated(Cohort), "", Cohort)) %>% 
+  # mutate(across(`All lines`:`Line 12`, \(x) round(x, 2)))
+  kableExtra::kbl() %>%
+  kableExtra::scroll_box(width = "1000px", height = "500px")
+  # tt() %>% 
+  # group_tt(i = list("Average" = 1, "2006" = 3, "2007" = 5, "2008" = 7, "2009" = 9, "2010" = 11, 
+  #                   "2011" = 13, "2012" = 15)) %>% 
+  # style_tt(i = 17, line = "t", line_width = 0.1)
+```
+
+:::
+
+
+
+## {{< fa gavel >}} Concluding remarks
+
+::: {style="font-size: 0.9em"}
+
+* General impacts
+  + 11.3 percent job growth
+  + 9 percent business growth
+  + No wage effects
+  
+* Impacts are smaller than in other LatAm metro areas
+  + Already a solid transit network pre-intervention
+
+* More jobs and business openings in the inner city (Line 9) than near downtown (L2, L4)
+
+:::
+
+
+
+## {{< fa heart >}} Thanks!
+
+
+#### Arthur Bazolli Alvarenga
+
+{{< fa paper-plane >}} <a href="mailto:arthur.alvarenga@ipea.gov.br" style="font-size: 30px"> arthur.alvarenga@ipea.gov.br</a>
+
+{{< fa link >}} <a href="https://baarthur.github.io/" style="font-size: 30px"> baarthur.github.io </a>
+
+{{< fa brands twitter >}} <a href="http://twitter.com/baarthur0" style="font-size: 30px"> \@baarthur0 </a>
+
+{{< fa brands bluesky >}} <a href="https://bsky.app/profile/baarthur.bsky.social" style="font-size: 30px"> \@baarthur </a>
+
+{{< fa brands github >}} <a href="http://github.com/baarthur" style="font-size: 30px"> \@baarthur </a>
+
+
+
+
+## {{< fa glasses >}} Bibliography
+
+[O Estado de S. Paulo, 2023.](https://mobilidade.estadao.com.br/mobilidade-para-que/sao-paulo-esta-quase-parando/)
+[Fortune, 2023.](https://fortune.com/2023/08/05/unaffordable-housing-rents-drivers-this-seattle-renter-to-move-out/)

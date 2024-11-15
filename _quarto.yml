@@ -1,0 +1,33 @@
+project:
+  title: "Labor market, accessibility, and agglomeration economies"
+  output-dir: output
+
+# format
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    
+# execution
+execute: 
+  echo: false
+  message: false
+  warning: false
+  error: false
+
+# figures
+fig-align: center
+fig-width: 6.3
+fig-format: png
+fig-dpi: 300
+
+# tables
+df-print: kable
+
+# references
+bibliography: src/yaml/Dissertação.json
+csl: src/yaml/abnt2023.csl
+editor: source
+
